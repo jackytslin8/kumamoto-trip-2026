@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>熊本必去景點版 5 天 4 夜</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f172a;
+    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    color: #e2e8f0;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 40px 24px; }
+
+  .header { text-align: center; margin-bottom: 32px; }
+  .header h1 { font-size: 2rem; color: #f8fafc; margin-bottom: 8px; letter-spacing: 2px; }
+  .header .sub { font-size: 0.95rem; color: #94a3b8; }
+  .header .meta { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .header .meta span { background: #1e293b; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; color: #cbd5e1; }
+
+  /* must-see checklist */
+  .must {
+    background: #052e16;
+    border: 1px solid #16a34a;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .must h2 { font-size: 1rem; color: #86efac; margin-bottom: 12px; }
+  .must-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .must-item {
+    background: #0f172a; border-radius: 8px; padding: 8px 12px;
+    font-size: 0.82rem; color: #d1fae5; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .must-item .day-tag { font-size: 0.7rem; color: #4ade80; white-space: nowrap; }
+
+  .day {
+    background: #1e293b; border-radius: 16px; margin-bottom: 24px;
+    overflow: hidden; border: 1px solid #334155;
+  }
+  .day-head { display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-bottom: 1px solid #334155; }
+  .day-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .d0 { background: linear-gradient(135deg,#64748b,#475569); }
+  .d1 { background: linear-gradient(135deg,#f97316,#ef4444); }
+  .d2 { background: linear-gradient(135deg,#3b82f6,#8b5cf6); }
+  .d3 { background: linear-gradient(135deg,#10b981,#0ea5e9); }
+  .d4 { background: linear-gradient(135deg,#f59e0b,#f97316); }
+  .d5 { background: linear-gradient(135deg,#8b5cf6,#ec4899); }
+  .day-title { flex: 1; }
+  .day-title h2 { font-size: 1.1rem; color: #f1f5f9; margin-bottom: 4px; }
+  .day-title .date { font-size: 0.85rem; color: #94a3b8; }
+
+  .day-body { padding: 18px 24px; }
+  .tl { list-style: none; }
+  .tl li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px dashed #334155; }
+  .tl li:last-child { border-bottom: none; }
+  .tl-time { min-width: 105px; font-size: 0.8rem; color: #fbbf24; font-weight: 700; padding-top: 2px; line-height: 1.5; }
+  .tl-time small { display: block; color: #64748b; font-weight: 400; font-size: 0.7rem; }
+  .tl-content { flex: 1; }
+  .tl-content h3 { font-size: 0.95rem; color: #f8fafc; margin-bottom: 4px; }
+  .tl-content p { font-size: 0.82rem; color: #94a3b8; line-height: 1.6; }
+  .tag { display: inline-block; font-size: 0.7rem; padding: 2px 8px; border-radius: 8px; background: #334155; color: #cbd5e1; margin-left: 6px; vertical-align: middle; }
+  .tag.opt { background: #334155; color: #94a3b8; }
+  .tag.must { background: #7c2d12; color: #fed7aa; }
+
+  .tip { margin-top: 14px; padding: 12px 16px; background: #172554; border-left: 3px solid #3b82f6; border-radius: 8px; font-size: 0.82rem; color: #bfdbfe; line-height: 1.6; }
+  .tip strong { color: #f8fafc; }
+  .warn { margin-top: 14px; padding: 12px 16px; background: #451a03; border-left: 3px solid #f97316; border-radius: 8px; font-size: 0.82rem; color: #fdba74; line-height: 1.6; }
+
+  .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin: 36px 0 14px; }
+  .legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+  .legend-item { background: #1e293b; border-radius: 10px; padding: 14px 16px; border: 1px solid #334155; font-size: 0.82rem; }
+  .legend-item .li-label { font-weight: 700; color: #f8fafc; margin-bottom: 6px; }
+  .legend-item .li-desc { color: #94a3b8; line-height: 1.6; }
+  .footer { text-align: center; margin-top: 44px; font-size: 0.78rem; color: #475569; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <h1>🏯 熊本必去景點版 5 天 4 夜</h1>
+    <div class="sub">2026/9/28 (一) 台北 14:00 → 10/2 (五) 16:00 回台北 ｜ 每天 1-2 大景點，必去清單全收</div>
+    <div class="meta">
+      <span>🏯 熊本城</span>
+      <span>🌋 阿蘇中岳火山口</span>
+      <span>🌾 草千里</span>
+      <span>⛩️ 上色見神社</span>
+      <span>♨️ 黒川温泉</span>
+      <span>🌊 水前寺成趣園</span>
+      <span>🐱 市動植物園</span>
+      <span>🏴‍☠️ 魯夫像</span>
+    </div>
+  </div>
+
+  <!-- 必去清單 -->
+  <div class="must">
+    <h2>✅ 熊本必去清單（本行程全收）</h2>
+    <div class="must-grid">
+      <div class="must-item">🏯 熊本城（三大名城）<span class="day-tag">9/29</span></div>
+      <div class="must-item">🌋 阿蘇中岳火山口<span class="day-tag">9/30</span></div>
+      <div class="must-item">🌾 草千里之濱<span class="day-tag">9/30</span></div>
+      <div class="must-item">🐐 阿蘇ファームランド<span class="day-tag">9/30 加映</span></div>
+      <div class="must-item">⛩️ 上色見熊野座神社<span class="day-tag">10/1</span></div>
+      <div class="must-item">💧 高森湧水トンネル公園<span class="day-tag">10/1 加映</span></div>
+      <div class="must-item">♨️ 黒川温泉日帰り湯<span class="day-tag">10/1</span></div>
+      <div class="must-item">🌊 水前寺成趣園<span class="day-tag">9/29</span></div>
+      <div class="must-item">🐘 熊本市動植物園<span class="day-tag">10/2</span></div>
+      <div class="must-item">🏴‍☠️ 江津湖魯夫像 + 童書之森<span class="day-tag">10/2 備選</span></div>
+      <div class="must-item">🏬 鶴屋百貨 + 下通商店街<span class="day-tag">9/29</span></div>
+      <div class="must-item">🍜 熊本拉麵 / 天草牛鍋<span class="day-tag">每日晚餐</span></div>
+    </div>
+  </div>
+
+  <!-- Day 0 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-num d0">0</div>
+      <div class="day-title">
+        <h2>抵達日 · 入住 + 拉麵</h2>
+        <div class="date">9/28 (一) 台北 14:00 → 熊本 17:20</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <ul class="tl">
+        <li>
+          <div class="tl-time">14:00-17:20</div>
+          <div class="tl-content"><h3>✈️ 台北 → 熊本</h3><p>2h20m 飛行 + 1 小時時差，17:20 落地。入境 + 行李約 45 分，18:15 出關。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">18:15-19:00<small>利木津巴士 40 分</small></div>
+          <div class="tl-content"><h3>機場 → 飯店（住通町筋 / 熊本車站周邊）</h3><p>市區景點都能市電 10-15 分到，KKDAY 取車就在熊本車站西口。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">19:30-21:00</div>
+          <div class="tl-content"><h3>晚餐：熊本拉麵第一碗</h3><p>下通 / 新市街「虎屋」八代屋（招牌「半藏麵」，兩用）或「博多一蘭 熊本店」。第一晚不排景點，吃完走回飯店。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">21:00</div>
+          <div class="tl-content"><h3>KKDAY 取車文件截圖</h3><p>駕照 + 日譯本（app 電子版）存手機，明後天兩日租車都用得到。</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-num d1">1</div>
+      <div class="day-title">
+        <h2>熊本市區必去日：熊本城 + 水前寺</h2>
+        <div class="date">9/29 (二) 市區雙經典</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <ul class="tl">
+        <li>
+          <div class="tl-time">08:30-10:30<small>市電「熊本城」電停</small></div>
+          <div class="tl-content">
+            <h3>🏯 熊本城（必去 No.1）<span class="tag must">本丸御殿 2028 才復舊完成</span></h3>
+            <p>日本三大名城。本丸御殿（Kogen）09:00-17:00（最晚入園 16:30），成人約 ¥800。重點：「武者返」陡石垣、天守閣上高岳展望台 360° 俯瞰全區。早上人最少、光線好。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">10:45-12:30</div>
+          <div class="tl-content">
+            <h3>櫻之馬場城彩苑 + 上通／下通商店街</h3>
+            <p>城彩苑前廣場拍照 → 市電「水島町」電停 → 鶴屋百貨 NEW-S 館、COCOSA、新市街、下通（蜂楽饅頭、唐吉軻德）。免稅店多，伴手禮這掃第一輪。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">12:30-13:30</div>
+          <div class="tl-content"><h3>午餐：城彩苑／通町筋熊本料理</h3><p>「くまもと料理」（天草牛鍋系）或通町筋「一蘭」系拉麵快速戰。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">14:30-16:30<small>市電「水前寺公園」電停</small></div>
+          <div class="tl-content">
+            <h3>🌊 水前寺成趣園（必去 No.2）</h3>
+            <p>日本庭園代表作，池泉回遊式，10 月初銀杏剛起色。門票約 ¥400-500（高中生以上），09:00-17:00。午後 14:30 順光最好拍。園邊就是熊本市動植物園（10/2 再去）。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">17:30-19:00</div>
+          <div class="tl-content"><h3>晚餐：下通「虎屋」八代屋</h3><p>半藏麵（牛骨 + 豚骨兩用）必吃。18:00 前到免排隊。或改天草牛鍋「旅の鍋」。</p></div>
+        </li>
+      </ul>
+      <div class="tip"><strong>💡</strong>：今天市電跑 4-5 段，買「Wakuwaku 1-Day Pass」一日券（路電 + 巴士，約 ¥300-450）最划算。</div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-num d2">2</div>
+      <div class="day-title">
+        <h2>阿蘇必去日：火山口 + 草千里（租車日 1/2）</h2>
+        <div class="date">9/30 (三) 阿蘇中岳 + 草原 + 農場</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <ul class="tl">
+        <li>
+          <div class="tl-time">07:30-08:30<small>KKDAY 取車 1 天</small></div>
+          <div class="tl-content"><h3>🚗 熊本車站西口取車 → 阿蘇火山</h3><p>車程約 1 小時（九州自動車道 → 阿蘇IC）。建議租<strong>兩天</strong>（9/30-10/1），比兩單一日租便宜，不用二次取車；過夜停熊本車站停車場（約 ¥500-800/夜）。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">09:00-10:30<small>火山口駐車場</small></div>
+          <div class="tl-content">
+            <h3>🌋 阿蘇中岳火山口（必去 No.1 阿蘇）<span class="tag must">先看管制公告</span></h3>
+            <p>世界罕見大型破火山口，活火山，蒂芬尼藍火山湖。步道環走 30-60 分。<strong>出發前 24h 查「阿蘇火山口規制情報」官網</strong>：若封閉 → 改 10:00-12:00 阿蘇ファームランド + 草千里，行程照跑。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">10:45-11:45<small>開車 15 分</small></div>
+          <div class="tl-content">
+            <h3>🌾 草千里之濱（必去 No.2 阿蘇）</h3>
+            <p>阿蘇五岳烏帽子岳北麓草原，9 月底轉金色調。騎馬體驗 ¥2,500 親子共乘（15:00 前到免預約）。旁有火山博物館 + 咖啡館。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">12:00-13:30</div>
+          <div class="tl-content"><h3>午餐：阿蘇市區</h3><p>阿蘇牛燒肉 / 馬刺 / 竹皮豆腐。阿蘇站周邊「阿蘇牛しゃぶ」或草千里珈琲焙煎所。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">14:00-15:30<small>往菊池市 30 分</small></div>
+          <div class="tl-content">
+            <h3>🐐 阿蘇ファームランド（加映，欣欣特攻）<span class="tag opt">09:00-17:00</span></h3>
+            <p>體驗型農場樂園：「元気の森」運動場 + 「ふれあい動物王國」（動物 10:00 開）+ 溫泉。門票約 ¥800-1,200。帶小四很適合。不想逛可刪掉這站，早點回。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">16:00-17:00</div>
+          <div class="tl-content"><h3>回熊本 + 過夜停車</h3><p>熊本車站周邊停車（月費停車場），KKDAY 兩天租車 10/1 早上再開走。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">19:00-20:30</div>
+          <div class="tl-content"><h3>晚餐：天草牛鍋</h3><p>「旅の鍋」系，阿蘇日走山路累了直接進鍋。或回通町筋吃熊本拉麵。</p></div>
+        </li>
+      </ul>
+      <div class="warn"><strong>⚠️ 必查</strong>：阿蘇火山管制公告（每季常變）+ 草千里騎馬是否開放（雨天 / 管制時關閉）。</div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-num d3">3</div>
+      <div class="day-title">
+        <h2>南阿蘇必去日：上色見 + 湧水 + 黒川（租車日 2/2）</h2>
+        <div class="date">10/1 (四) 南阿蘇三連擊</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <ul class="tl">
+        <li>
+          <div class="tl-time">08:00-09:30<small>開車 1h30m</small></div>
+          <div class="tl-content">
+            <h3>⛩️ 上色見熊野座神社（必去 No.1 南阿蘇）</h3>
+            <p>「阿蘇必拜」神社，山頂石階 10-15 分鐘，參拜免費。山腰展望台看阿蘇破火山口全貌，絕景。清早 09:30 到，人最少、霧最少。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">09:45-10:30<small>開車 15 分</small></div>
+          <div class="tl-content">
+            <h3>💧 高森湧水トンネル公園（加映 10 分點）<span class="tag opt">免費</span></h3>
+            <p>日本三大湧水「高森湧水」旁的混凝土隧道，冷涼、綠苔、拍照 10 分鐘就走，就在高森車站旁。順路無損失。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">10:45-12:00</div>
+          <div class="tl-content"><h3>高森市區：阿蘇牛湯 + 咖啡</h3><p>高森站周邊「馬刺 / 阿蘇牛」老舖，或高森咖啡。慢食一小時。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">12:15-14:30<small>開車 45 分</small></div>
+          <div class="tl-content">
+            <h3>♨️ 黒川温泉 日帰り湯（必去 No.2 南阿蘇）</h3>
+            <p>日本 100 大溫泉街。選法：<br>・「いこい旅館」免預約：大人 ¥800 / 小童 ¥600<br>・「黒川荘」湯巡り手形：多宿輪湯（露天看屏風岩）<br>・多數旅館日帰り湯有固定時段（常 14:00 或 15:00 起），<strong>前晚電話確認時段</strong>。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">14:30-16:15<small>開車 1h45m</small></div>
+          <div class="tl-content"><h3>回熊本車站</h3><p>南阿蘇 → 熊本 1 小時 45 分，14:30 必須起腳。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">16:15-17:00</div>
+          <div class="tl-content"><h3>🚗 KKDAY 還車（兩天租車結束）</h3><p>熊本車站西口還車，油補滿 + IC 卡還原。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">18:30-20:00</div>
+          <div class="tl-content"><h3>晚餐：くまもと料理「天草牛鍋」</h3><p>通町筋 / 新市街，最後一晚吃好的。或「一蘭 / 虎屋」再收尾拉麵。</p></div>
+        </li>
+      </ul>
+      <div class="tip"><strong>💡 動線說明</strong>：上色見神社（高森町）→ 高森湧水（高森車站）→ 高森午餐 → 黒川温泉（南阿蘇村），一路向西南不折返，是最順的南阿蘇一日遊動線。</div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-num d5">4</div>
+      <div class="day-title">
+        <h2>市區收尾日：動植物園 + 魯夫像 → 回台</h2>
+        <div class="date">10/2 (五) 16:00 航班回台北</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <ul class="tl">
+        <li>
+          <div class="tl-time">08:30-09:15</div>
+          <div class="tl-content"><h3>伴手禮最後掃尾</h3><p>通町筋「鶴屋東館」1F 熊本熊廣場 / 免稅店：黑糖麻糬「おやつ処白川」、阿蘇牛乳製品、Kumamon 周邊。前幾晚沒買齊的用這裡補。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">09:30-12:00<small>市電「動植物園」電停</small></div>
+          <div class="tl-content">
+            <h3>🐘 熊本市動植物園（必去，欣欣特攻）</h3>
+            <p>1929 開園，熊本市區南郊「熊本市後花園」：130 種動物 + 1000 種植物 + 小火車、摩天輪、遊樂區。約 ¥700。09:30 開園就進，人最少。</p>
+          </div>
+        </li>
+        <li>
+          <div class="tl-time">12:00-13:00</div>
+          <div class="tl-content"><h3>備選：江津湖魯夫像 + 童書之森</h3><p>不進動植物園可改：市電「江津湖」電停 → 魯夫銅像（海賊王迷必拍）+ 童書之森熊本（安藤忠雄繪本館，免費 10:00-18:00）。兩選一即可。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">13:00-14:15<small>利木津巴士 40 分</small></div>
+          <div class="tl-content"><h3>市區 → 機場</h3><p>通町筋上利木津巴士（或市電到熊本駅前轉機場利木津巴士），40 分到機場。</p></div>
+        </li>
+        <li>
+          <div class="tl-time">14:15-15:00</div>
+          <div class="tl-content"><h3>Check-in</h3><p>16:00 航班，櫃檯 15:00 截止。14:15 到機場剛好，15:00 前完成。落台北約 18:15。</p></div>
+        </li>
+      </ul>
+      <div class="warn"><strong>⏰ 時間表</strong>：10/2 是「動植物園 09:30-12:00」+「12:30 前回飯店取行李」+「13:00 上機場巴士」。如果動植物園玩超時，砍魯夫像 / 童書之森，直接 12:00 回飯店、12:45 上巴士。16:00 航班不能誤。</div>
+    </div>
+  </div>
+
+  <!-- 實用資訊 -->
+  <div class="section-label">實用資訊</div>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="li-label">🚗 租車策略（兩天）</div>
+      <div class="li-desc">KKDAY 9/30 07:30 取車 → 10/1 17:00 還車，兩天包 1 台比兩單日便宜約 ¥2,000-3,000。過夜停熊本車站周邊月費停車場（¥500-800/夜）。右舵左行，阿蘇 / 南阿蘇山路限速 40-50，會車注意。</div>
+    </div>
+    <div class="legend-item">
+      <div class="li-label">⚠️ 出發前 24h 必查</div>
+      <div class="li-desc">① 阿蘇火山口管制公告（封閉改方案）② 黒川温泉日帰り湯時段（前晚電話確認）③ 草千里騎馬是否開放（雨天 / 管制關閉）④ 台 / 日航班是否正常（颱風季尾）。</div>
+    </div>
+    <div class="legend-item">
+      <div class="li-label">🌡️ 天氣（9 月底 - 10 月初）</div>
+      <div class="li-desc">市區 18-27°C，阿蘇山頂 10-15°C。9/30 火山口、10/1 上色見都帶薄外套。10 月偶有陣雨，隨身雨具。</div>
+    </div>
+    <div class="legend-item">
+      <div class="li-label">💴 預算（一家四口 5 天，不含機票）</div>
+      <div class="li-desc">住宿 4 晚 ¥40,000-60,000 + KKDAY 兩天 ¥10,000-14,000 + 門票（城 ¥800×3、水前寺 ¥400×3、動植物園 ¥700×4、ファーム ¥1,000×4）+ 日帰り湯 ¥2,000-4,000 + 餐飲 / 油 / 高速 ≈ <strong>NT$ 40,000-55,000</strong>。</div>
+    </div>
+    <div class="legend-item">
+      <div class="li-label">🚃 市電</div>
+      <div class="li-desc">單程 210 円，一日券 Wakuwaku 1-Day Pass 約 ¥300-450（路電 + 巴士）。市電可 IC 卡 / 感應信用卡上下車都刷。路線：中央線（熊本駅前 ⇔ 高森）+ 回線（熊本駅前 ⇔ 田崎橋）。</div>
+    </div>
+    <div class="legend-item">
+      <div class="li-label">🍜 必吃清單</div>
+      <div class="li-desc">熊本拉麵（虎屋 / 一蘭）、天草牛鍋（旅の鍋）、馬刺（阿蘇 / 高森）、黒糖麻糬（おやつ処白川）、木棉豆腐（桜塚公園）、蜂楽饅頭（下通）、阿蘇牛乳製品。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    熊本必去景點版 · 2026-09-26<br>
+    必去 8 大景點全收 + 3 個加映 · 阿蘇火山管制 & 黒川日帰り湯時段為出發前必查項
+  </div>
+</div>
+</body>
+</html>
